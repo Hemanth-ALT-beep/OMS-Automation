@@ -1,4 +1,4 @@
-# OMS Automation Testing Project
+# ORDER MANAGEMENT SYSTEM(OMS) Automation Testing Project
 
 ## 1. Setup Instructions
 
