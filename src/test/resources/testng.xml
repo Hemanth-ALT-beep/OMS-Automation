@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="OMS Automation Suite" parallel="false">
+    <test name="OMS API Tests">
+        <classes>
+            <class name="tests.OrderApiTest"/>
+            <class name="tests.NegativeApiTest"/>
+            <!-- Enable only after a real OMS UI and selectors are configured:
+            <class name="tests.OrderUiTest"/>
+            -->
+        </classes>
+    </test>
+</suite>

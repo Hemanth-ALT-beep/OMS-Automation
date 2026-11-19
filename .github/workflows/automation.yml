@@ -1,0 +1,36 @@
+name: OMS Selenium and API Automation
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  automation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Java 22
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "22"
+          cache: maven
+
+      - name: Run API tests
+        run: mvn --batch-mode clean test
+        env:
+          OMS_BASE_URL: http://localhost:8089
+
+      - name: Upload reports and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oms-test-artifacts
+          path: |
+            target/surefire-reports/
+            target/screenshots/
